@@ -9,17 +9,17 @@ class Analyzer:
             for riga in lettore:
                 exam = Esame(riga["esame"], int(riga["cfu"]), int(riga["voto"]))
                 self.lista_esami.append(exam)
-
+                print(exam)
 
 
     def calculate_weighted_average(self):
-        i=0
+        cfu_tot=0
         pesi=0
         for exam in self.lista_esami:
-            i+=1
+            cfu_tot+=exam.cfu
             peso=exam.calculate_exam_weight()
             pesi+=peso
-        return pesi/i
+        return pesi/cfu_tot
 
 
     def calculate_average(self):
@@ -29,3 +29,7 @@ class Analyzer:
             i+=1
             sum+=exam.voto
         return sum/i
+
+
+if __name__ == "__main__":
+    app = Analyzer()
