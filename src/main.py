@@ -6,21 +6,21 @@ def main():
 
 
     while True:
-        select=int(input("Select: 1: Calculate exam average - 2: Calculate exam weighted average - 3: Do an average simulation to know witch vote you need - 4: Exit   "))
+        select=int(input("Select: 1) Calculate arithmetic average - 2) Calculate weighted average - 3) Estimate the grade needed for a target average - 4) Exit: "))
         if(select==1):
             media=analyzer.calculate_average()
-            print(f"Your actual aritmetic average is: {media:.2f}")
+            print(f"Your current arithmetic average is: {media:.2f}")
         elif(select==2):
             weighted_average=analyzer.calculate_weighted_average()
-            print(f"Your actual weighted average is: {weighted_average:.2f}")
+            print(f"Your current weighted average is: {weighted_average:.2f}")
         elif(select==3):
-            cfu=int(input("How many cfu is the exam: "))
+            cfu=int(input("How many CFU is the exam worth: "))
             if cfu < 1:
-                print("Cfu value is not valid!")
+                print("Invalid CFU value!")
             else:
-                average=int(input("Goal average: "))
+                average=float(input("Target average: "))
             if average > 30 or average <= 0:
-                print("Average value is not valid!")
+                print("Invalid average value!")
             else:
                 print(analyzer.estimate_vote_for_average(average, cfu))
         elif(select==4):

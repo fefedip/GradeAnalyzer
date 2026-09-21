@@ -10,10 +10,10 @@ class Analyzer:
             with open(percorso_csv, "r") as f:
                 lettore=csv.DictReader(f)
                 for riga in lettore:
-                    exam = Esame(riga["esame"], int(riga["cfu"]), int(riga["voto"]))
+                    exam = Esame(riga["Esame"], int(riga["cfu"]), int(riga["voto"]))
                     self.lista_esami.append(exam)
         except FileNotFoundError:
-            print("File not found, create a valid csv file")
+            print("File not found. Please create a valid CSV file.")
 
 
     def calculate_weighted_average(self):
@@ -46,6 +46,4 @@ class Analyzer:
         if (voto <= 30):
             return voto
         else:
-            print("You can't reach such average with an accepted vote!")
-
-
+            print("You can't reach that average with a valid grade!")
